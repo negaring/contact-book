@@ -196,7 +196,7 @@ void editcontact(string search) {
 }
 int main() {
 
-	cout << "menu: ";
+	cout << "menu: " << endl;
 	int option;
 	string fname;
 	system("cls");
