@@ -67,7 +67,6 @@ void listrecord()
 
 void csearch(string search)
 {
-
 	system("cls");
 	cout << "results:" << endl;
 	int counter = 0;
