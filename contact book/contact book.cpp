@@ -10,6 +10,7 @@ string Cfname[tedad] = {};
 string Clname[tedad] = {};
 string Cemail[tedad] = {};
 string Cphonenumber[tedad] = {};
+
 void addcontact()
 {
 	char fname[20];
