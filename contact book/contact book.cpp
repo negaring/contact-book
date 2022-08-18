@@ -3,20 +3,23 @@
 #include <fstream>
 
 using namespace std;
+const int tedad = 100;
+struct contact {
 
-const int tedad = 30;
+	string Cfname[tedad] = {};
+	string Clname[tedad] = {};
+	string Cemail[tedad] = {};
+	string Cphonenumber[tedad] = {};
 
-string Cfname[tedad] = {};
-string Clname[tedad] = {};
-string Cemail[tedad] = {};
-string Cphonenumber[tedad] = {};
+};
+contact b;
+char fname[20];
+char lname[20];
+char phonenumber[15];
+char email[30];
 
 void addcontact()
 {
-	char fname[20];
-	char lname[20];
-	char phonenumber[15];
-	char email[30];
 	cout << "fisrt name:" << endl;
 	cin >> fname;
 	cout << "last name: " << endl;
@@ -28,12 +31,12 @@ void addcontact()
 
 	for (int i = 0; i < tedad; i++)
 	{
-		if (Cfname[i] == "\0")
+		if (b.Cfname[i] == "\0")
 		{
-			Cfname[i] = fname;
-			Clname[i] = lname;
-			Cphonenumber[i] = phonenumber;
-			Cemail[i] = email;
+			b.Cfname[i] = fname;
+			b.Clname[i] = lname;
+			b.Cphonenumber[i] = phonenumber;
+			b.Cemail[i] = email;
 			cout << "name:" << " " << fname << lname << endl;
 			cout << "phone number:" << " " << phonenumber << endl;
 			cout << "email:" << " " << email << endl;
@@ -42,20 +45,18 @@ void addcontact()
 
 	}
 }
-
 void listrecord()
 {
 	system("cls");
 	cout << "list:" << endl;
 	int counter = 0;
 	cout << "no.   |first name      | last name        | phone number         | email          " << endl << "...........................................................................\n";
-	for (int x = 0; x < tedad; x++)
+	for (int i = 0; i < tedad; i++)
 	{
-		if (Cfname[x] != "\0")
+		if (b.Cfname[i] != "\0")
 		{
 			counter++;
-			cout << "  " << counter << "     " << Cfname[x] << "      " << Clname[x] << "         " << Cphonenumber[x] << "            " << Cemail[x] << "                          " << endl;
-
+			cout << "  " << counter << "     " << b.Cfname[i] << "      " << b.Clname[i] << "         " << b.Cphonenumber[i] << "            " << b.Cemail[i] << "                          " << endl;
 		}
 	}
 	if (counter == 0)
@@ -64,7 +65,6 @@ void listrecord()
 
 	}
 }
-
 void csearch(string search)
 {
 	system("cls");
@@ -74,44 +74,43 @@ void csearch(string search)
 	{
 		cout << "no.   |first name      | last name        | phone number         | email          " << endl << ".................................................................................\n";
 		break;
-		if (Cfname[i] == search)
+		if (b.Cfname[i] == search)
 		{
 			counter++;
-			cout << "  " << counter << "      " << Cfname[i] << "       " << Clname[i] << "     " << Cphonenumber[i] << "   " << Cemail[i] << endl;
-			
+			cout << "  " << counter << "      " << b.Cfname[i] << "      " << b.Clname[i] << "         " << b.Cphonenumber[i] << "            " << b.Cemail[i] << "                          " << endl;;
+
 		}
 
 	}
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Clname[i] == search)
+		if (b.Clname[i] == search)
 		{
 			counter++;
-			cout << "  " << counter << "      " << Cfname[i] << "       " << Clname[i] << "     " << Cphonenumber[i] << "   " << Cemail[i] << endl;
-			
+			cout << "  " << counter << b.Cfname[i] << "      " << b.Clname[i] << "         " << b.Cphonenumber[i] << "            " << b.Cemail[i] << "                          " << endl;;
+
 		}
 
 	}
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Cphonenumber[i] == search)
+		if (b.Cphonenumber[i] == search)
 		{
 			counter++;
-			cout << "  " << counter << "      " << Cfname[i] << "       " << Clname[i] << "     " << Cphonenumber[i] << "   " << Cemail[i] << endl;
-			
+			cout << "  " << counter << "      " << b.Cfname[i] << "      " << b.Clname[i] << "         " << b.Cphonenumber[i] << "            " << b.Cemail[i] << "                          " << endl;;
+
 		}
 
 	}
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Cemail[i] == search)
+		if (b.Cemail[i] == search)
 		{
 			counter++;
-			cout << "  " << counter << "      " << Cfname[i] << "       " << Clname[i] << "     " << Cphonenumber[i] << "   " << Cemail[i] << endl;
-			
+			cout << "  " << counter << "      " << b.Cfname[i] << "      " << b.Clname[i] << "         " << b.Cphonenumber[i] << "            " << b.Cemail[i] << "                          " << endl;;
 		}
 
 	}
@@ -122,22 +121,17 @@ void csearch(string search)
 
 }
 void editcontact(string search) {
-	char fname[20];
-	char lname[20];
-	char phonenumber[15];
-	char email[30];
-
 	int counter = 0;
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Cfname[i] == search)
+		if (b.Cfname[i] == search)
 		{
 			counter++;
 			cout << " enter new first name: " << endl << "........................................................................................................................\n";
 			cin.getline(fname, 50);
 
-			Cfname[i] = fname;
+			b.Cfname[i] = fname;
 			cout << "update successfull" << endl;
 			break;
 		}
@@ -146,13 +140,13 @@ void editcontact(string search) {
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Clname[i] == search)
+		if (b.Clname[i] == search)
 		{
 			counter++;
 			cout << " enter new last name: " << endl << "........................................................................................................................\n";
 			cin.getline(lname, 50);
 
-			Clname[i] = lname;
+			b.Clname[i] == lname;
 			cout << "update successfull" << endl;
 			break;
 		}
@@ -161,13 +155,13 @@ void editcontact(string search) {
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Cphonenumber[i] == search)
+		if (b.Cphonenumber[i] == search)
 		{
 			counter++;
 			cout << " enter new phone number: " << endl << "........................................................................................................................\n";
 			cin.getline(phonenumber, 50);
 
-			Cphonenumber[i] = phonenumber;
+			b.Cphonenumber[i] == phonenumber;
 			cout << "update successfull" << endl;
 			break;
 		}
@@ -176,13 +170,13 @@ void editcontact(string search) {
 	for (int i = 0; i < tedad; i++)
 	{
 
-		if (Cemail[i] == search)
+		if (b.Cemail[i] == search)
 		{
 			counter++;
 			cout << " enter new email: " << endl << "........................................................................................................................\n";
 			cin.getline(email, 50);
 
-			Cemail[i] = email;
+			b.Cemail[i] == email;
 			cout << "update successfull" << endl;
 			break;
 		}
@@ -192,13 +186,13 @@ void editcontact(string search) {
 	{
 		cout << "no contact found" << endl;
 	}
-	
+
 }
 int main() {
 
-	cout << "menu: " << endl;
+	cout << "menu: ";
 	int option;
-	string fname;
+	struct contact b;
 	system("cls");
 	do {
 
@@ -220,22 +214,22 @@ int main() {
 		case 3:
 			cin.ignore();
 			cout << "search: " << "   " << endl;
-			getline(cin, fname);
+			getline(cin, fname);//why?
+			//cin.getline(fname, 50);
+			//ولی اینو میزنم دیگه توی فرست نیم ها سرچ نمی کنه
 			csearch(fname);
 			break;
 		case 4:
 			cin.ignore();
 			cout << "right the wrong part:" << endl << "..................................................." << endl;
-			getline(cin, fname);
+			getline(cin, fname);//why again?
+			//cin.getline(fname, 50);
+			//ولی اینو میزنم دیگه توی فرست نیم ها سرچ نمی کنه
 			editcontact(fname);
 			break;
 		case 5:
 			break;
 		}
+
 	} while (option != 5);
-
-
-
 }
-//مشکلات:اول اینکه توی سرچ فقط یکی رو نشون میده دوما اینکه موقع ادیت کانتکت اگر دو کانتک با یک بخش مشابه داشته باشیم 
-//نمی دونم باید چیکار کنم و چه شکلی کانتکت مورد نظر رو انتخاب کنم
